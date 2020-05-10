@@ -1,0 +1,387 @@
+FORM = 0
+import random
+import time
+
+def introScreen():
+    print ('''|---------------------------------------------|
+| T H E  I N F I N I T E  B U R E A U C R A T |
+|---------------------------------------------|''')
+    print()
+
+
+def openingScene():
+    global FORM
+    print ('''You wake up. The tile floor you are lying on is
+cold. As you get to your feet, you notice that
+your clothes smell of almonds.''')
+    FORM = 0
+    print ()
+
+def lookAround():
+    print ('''
+What do you do?
+[1] Look around.
+[2] Call out.''')
+    firstAnswer = input()
+    if firstAnswer == '2':
+           print('''You call out, whether anyone hears you or not remains to be seen.''')
+           lookAround()
+    
+    elif firstAnswer == '1':
+           print('''You are in a room with grey marble walls.
+The ceiling is high. In front of you
+is a desk, on that desk is a button
+and behind that desk are a pair of
+oak double doors. Behind the desk and
+above the doors is a plaque that reads:
+"Central Protocal Centre"''')
+           print()
+        
+    else:
+        print ('That is not a valid choice.')
+        firstAnswer = None
+        lookAround()
+
+def deskAndDoor():
+    global FORM
+    print ('''What do you do?
+[1] Try door.
+[2] Call out.
+[3] Check Desk.
+[4] Button.''')
+    secondAnswer = input()
+    if secondAnswer == '1':
+        print ('''You try the handles. They are locked. A voice calls out,
+nervously "Please follow proper protocals!"''')
+        print()
+        deskAndDoor()
+    elif secondAnswer == '2':
+        print ('''You call out. You hear a cough from behind the double
+doors. It could have been in response, more likely
+it was just a coincidence.''')
+        print()
+        deskAndDoor()
+    elif secondAnswer == '3':
+        print ('''On the desk is a large red button with faded white lettering on
+it that reads "Please Press". The rest of the desk is
+bare, apart from a drawer at the back containing something
+called "Protocal Form No. F1a7z K17ka". You take one...
+just incase.''')    
+        FORM = 1
+        print()
+        deskAndDoor()
+    
+    elif secondAnswer == '4':
+        print ('''You position yourself in front of the desk and press the button.
+The locks on the double doors audibly click and
+some hidden engine opens the doors for you.''')
+        print()
+
+    else:
+        print ('''That is not a valid choice''')
+        secondAnswer = None
+        deskAndDoor()
+
+def doorOpen():
+    global FORM
+    print ('''What do you do?
+[1] Go through the doors.
+[2] Check Desk.
+[3] Call out.''')
+    thirdAnswer = input()
+    if thirdAnswer == '3':
+        print ('''You call out and a man responds.
+"You can come through now!"''')
+        print()
+        doorOpen()
+        
+    elif thirdAnswer == '2':
+        print ('''On the desk is a large red button with barely visible
+white writing that reads "Please Press". The rest of the desk is bare,
+apart from a drawer at the back containing something called
+"Protocal Form No. F1a7z K17ka".
+You take one... just incase.''')
+        print()
+        FORM = 1
+        doorOpen()
+
+        
+    elif thirdAnswer == '1':
+        print ('''You barely notice them close behind you, but you
+still get a sinking feeling in your stomach when
+they do. You arrive at one end of another large
+tiled room. A man stands at the other end, waiting.
+He smiles expectantly. To your right is a red carpet
+marked "priority" lane, to the left is a long winding
+path in and around bollards fenced with red tape that
+is labelled "protocal lane".''')
+        print()
+    else:
+        print ('''That is not a valid choice''')
+        thirdAnswer = None
+        doorOpen()
+
+
+
+def leftOrRight():
+    global FORM
+    print ('''
+What will you do?
+[1] Go through the bollards.
+[2] Take the priority lane!
+[3] Look closer.''')
+    fourthAnswer = input()
+    if fourthAnswer == '1' and FORM == 0:
+        print('''You trudge back and forth through the bollards. When you get to
+the man he asks you for your paperwork.
+
+"What do you mean, you don't have paperwork?"
+
+He looks up at the ceiling.
+
+"How much did they give you last time? Oh well...
+Bring paperwork on the next run"
+
+You notice a faint vapour emerging from
+the cracks in between the tiles on the floor.
+The man slowly sits down and rests
+his head on the floor.
+
+"Maybe I'll be done soon..."
+
+The smell of almonds fills your nostrils.
+The man closes his eyes and goes quiet.
+You collapse.''')
+        print()
+        main()
+    elif fourthAnswer == '3':
+        print ('''You realise that he is wearing a brown pin-stripe suite of almost
+identical cut and style to yours. Behind the man is a desk with a
+briefcase and behind that desk, a small door.''')
+        print()
+        leftOrRight()
+    elif fourthAnswer == '2':
+        print ('''"Wheeee!"
+
+The temptation is too much! You storm down the red-carpet
+waving your arms around like an airplane.
+The man looks up at the ceiling in despair.
+
+"For fuck's sake! What am I suppose to do with this?"
+
+You feel breathless. You feel weak.
+For some reason you can smell almonds.
+You fall face first on the carpet.''')
+        print()
+        main()
+    elif fourthAnswer == '1' and FORM == 1:
+        print('''You obediently make your way through the bollards.
+The man meets you at the end and you re-evaluate
+his smile as more nervous than expectant.
+He asks you for your form, you supply him with
+what you found in the desk. He breathes a sigh
+of relief. As you hand it over you notice that
+you haven't filled the form in and there is
+nowhere on the form to do so. He turns and
+puts the form in a briefcase resting on an
+empty desk behind him then beckons you to
+follow.''')
+        print()
+    else:
+        print ('''That is not a valid choice''')
+        fourthAnswer = None
+        leftOrRight()
+
+def followOrQuestion():
+    print('''What will you do?
+[1] Follow the man quietly.
+[2] Ask where you are.
+[3] Rebel''')
+    fifthanswer = input()
+    if fifthanswer == '3':
+        print ('''You give in to your urges and flip the desk over,
+scream at the walls and begin spriting up and down the
+"priority lane". The man looks at you appalled but the
+corners of his mouth suggest that he understands your
+frustration. It's the last thing you remember.''')
+        print()
+        main()
+    elif fifthanswer == '2':
+        print ('''You ask him where you are. He turns and shrugs with a certain
+hopelessness.
+
+"Please don't talk too much. They don't like non-protocal speech."''')
+        print()
+        print ('''What will you do?
+[1] Ask about 'them'.
+[2] Follow him to the door.''')
+        exception = input()
+        if exception == '1':
+            print ('''"They are the ones who watch and keep the game going. They don't
+like being spoken about"
+
+You feel woozy. The man looks at you with a face of grim inevitability
+and sits down on the floor. Your knees go weak and you join him.''')
+            print()
+            main()
+            
+        elif exception == '2':
+            print ('''As you walk to the back of the room. You notice that the door the man
+is leading you is about 1/3rd the size of regular door. When he opens it.
+You are both forced to crawl in on your hands and knees. You both arrive
+in a small octogonal room. You only think of it as octogonal because you
+don't know what the word for "loads of sides so numerous it makes your
+head hurt". Each side contains an identical door and in the middle of
+the room is a briefcase.''')
+            print()
+        else:
+            print('You had a bit of a brain fart.')
+            print ()
+            print ('''As you walk to the back of the room. You notice that the door the man
+is leading you is about 1/3rd the size of regular door. When he opens it.
+You are both forced to crawl in on your hands and knees. You both arrive
+in a small octogonal room. You only think of it as octogonal because you
+don't know what the word for "loads of sides so numerous it makes your
+head hurt". Each side contains an identical door and in the middle of
+the room is a briefcase.''')
+            
+            
+    elif fifthanswer == '1':
+        print('''As you walk to the back of the room. You notice that the door the man
+is leading you is about 1/3rd the size of regular door. When he opens it.
+You are both forced to crawl in on your hands and knees. Crawling with him
+in front, you notice that he is wearing the exact same pair of shoes as
+you. You both arrive in a small octogonal room. You only think of it as
+octogonal because you don't know what the word is for "loads of sides
+so numerous it makes your head hurt". Each side contains an identical
+door and in the middle of the room is a briefcase.
+
+The man indicates for you to pick up the briefcase and points to door.
+"That one will do, just play along."''')
+        print()
+    else:
+        print ('''That is not a valid choice''')
+        fifthAnswer = None
+        followOrQuestion()
+       
+
+def takeTheBriefcase():
+    print (''' What will you do?
+[1] Pick up the briefcase and go through the door.
+[2] Open the briefcase.
+[3] Use the briefcase to smash the man in the face''')
+    sixthanswer = input()
+    if sixthanswer == '2':
+        print (''' Although it felt grotesquely heavy when you first picked
+it up, upon opening it you see that it contains only
+one piece of paper.
+
+"Instructions, for the next room. In case you forget."
+
+The man smiles meekly indicating again to the door
+he first pointed at.''')
+        print()
+        takeTheBriefcase()
+    elif sixthanswer == '3':
+        print ('''Snatching it from the ground, you ram it with both hands into his teeth.
+Just as the briefcase connects and you feel the crunch of teeth being renched
+from gums. The lights go out. You hear hissing and taste almonds.''')
+        print()
+        main()
+    elif sixthanswer == '2':
+        print ('''You step through the door. As you pass through you notice that you
+didn't need to crawl this time. At the other end of the room is a set of
+double doors. To the right is a red carpet and on the left a long widing
+lane made up of bollards and red tape. The double doors click open.
+A man in a brown pin-stripe suit walks in.''')
+        print()
+    else:
+        print('That is not a valid choice')
+        sixthanswer = None
+        takeTheBriefcase()
+
+def arseSlap():
+    print ('''The man immediately sprints down the red carpet. Hooting and
+hollering while slapping his arse and dancing the whole time.
+Just before you pass out, you see the desperation in his eyes.''')
+    print()
+    main()
+
+def noPaperwork():
+    print ('''Tired and broken, it hurts to look at him as he pathetically makes
+his way through the red-taped bollards. You check your instructions
+and ask for the paperwork. He doesn't have it.
+
+What will you do?
+[1] Yell at him.
+[2] Sigh and explain how this works.''')
+    option = input ()
+    if option == '1':
+        print('''"You moron. You utter fucking moron!" you howl as the world
+closes around you and he falls face first on the floor.''')
+        print()
+        main()
+    elif option == '2':
+        print ('''You try to explain to him that he needs the proper paperwork
+and that he really should try harder. You are about to tell him to check the
+desk next time but the words all slur and that last thing you remember
+is telling him to "Churk Des"''')
+        print()
+        main()
+    else:
+        print ('''It's too late you hear the gas before you smell it''')
+        print ()
+        main()
+
+def correct():
+    print('''He takes the correct lane, skating in and out of the bollards with
+ease before he smugly hands you his paperwork.
+
+What will you do?
+[1] Punch him.
+[2] Bring him through''')
+    option2 = input()
+    if option2 == '1':
+        print ('''His vacant little face beckons your fist and you have smashed
+him in the nose before you can even think. Your hand is bleeding. You hope
+whatever it is they pump in these rooms will relieve you of your pain.''')
+        print()
+        main()
+    elif option2 == '2':
+        print ('''You show him through to the backroom. He collects his briefcase
+and goes through a door that you pick at random. You hope he gets someone bad.
+The lights go out. Hissing. Darkness.''')
+        print()
+        main()
+    else:
+        print ('''His smugness seems inhuman considering the circumstances. It is so
+overwhelming that all you can do is stare at him and think of insults.
+Eventually you feel so disgusted that you turn away looking for an exit
+and pass out.''')
+        main()
+               
+        
+
+
+def yourOwnChallenge():
+    events = [correct, noPaperwork, arseSlap]
+    pick = random.randint (0, 2)
+    events[pick]()
+    
+def main():
+    time.sleep(2)
+    openingScene()
+    lookAround()
+    deskAndDoor()
+    doorOpen()
+    leftOrRight()
+    followOrQuestion()
+    takeTheBriefcase()
+    yourOwnChallenge()
+    
+
+        
+introScreen()
+print ('Press any key to begin.')
+input ()
+main()
